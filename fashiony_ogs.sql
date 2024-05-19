@@ -1448,6 +1448,8 @@ INSERT INTO `tbl_top_category` (`tcat_id`, `tcat_name`, `show_on_menu`) VALUES
 (1, 'Men', 1),
 (2, 'Women', 1),
 (3, 'Kids', 1);
+(4,'General Store', 1);
+(5,'Medicines',1);
 
 -- --------------------------------------------------------
 
