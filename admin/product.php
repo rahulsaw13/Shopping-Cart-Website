@@ -1,13 +1,15 @@
 <?php require_once('header.php'); ?>
 
 <section class="content-header">
-	<div class="content-header-left">
-		<h1>View Products</h1>
-	</div>
-	<div class="content-header-right">
-		<a href="product-add.php" class="btn btn-primary btn-sm">Add Product</a>
-	</div>
+    <div class="content-header-left">
+        <h1>View Products</h1>
+    </div>
+    <div class="content-header-right">
+        <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#uploadModal">Upload Excel</button>
+        <a href="product-add.php" class="btn btn-primary btn-sm">Add Product</a>
+    </div>
 </section>
+
 
 <section class="content">
 	<div class="row">
@@ -22,6 +24,8 @@
 								<th width="200">Product Name</th>
 								<th width="60">Old Price</th>
 								<th width="60">Current Price</th>
+								<th width="60">GST Included Price</th>
+								<th width="60">GST</th>
 								<th width="60">Quantity</th>
 								<th>Is Featured?</th>
 								<th>Is Active?</th>
@@ -37,7 +41,9 @@
 														t1.p_id,
 														t1.p_name,
 														t1.p_old_price,
+														t1.p_actual_price,
 														t1.p_current_price,
+														t1.p_gst,
 														t1.p_qty,
 														t1.p_featured_photo,
 														t1.p_is_featured,
@@ -72,7 +78,9 @@
 									<td style="width:130px;"><img src="../assets/uploads/<?php echo $row['p_featured_photo']; ?>" alt="<?php echo $row['p_name']; ?>" style="width:100px;"></td>
 									<td><?php echo $row['p_name']; ?></td>
 									<td><?php echo $row['p_old_price']; ?></td>
+									<td><?php echo $row['p_actual_price']; ?></td>
 									<td><?php echo $row['p_current_price']; ?></td>
+									<td><?php echo $row['p_gst']; ?></td>
 									<td><?php echo $row['p_qty']; ?></td>
 									<td>
 										<?php if($row['p_is_featured'] == 1) {echo 'Yes';} else {echo 'No';} ?>
@@ -113,6 +121,26 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-danger btn-ok">Delete</a>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for Excel Upload -->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="product-import.php" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="uploadModalLabel">Upload Excel File</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="file" name="excel_file" class="form-control" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Upload</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

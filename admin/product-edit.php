@@ -24,7 +24,7 @@ if(isset($_POST['form1'])) {
         $error_message .= "Product name can not be empty<br>";
     }
 
-    if(empty($_POST['p_current_price'])) {
+    if(empty($_POST['p_actual_price'])) {
         $valid = 0;
         $error_message .= "Current Price can not be empty<br>";
     }
@@ -93,7 +93,8 @@ if(isset($_POST['form1'])) {
         	$statement = $pdo->prepare("UPDATE tbl_product SET 
         							p_name=?, 
         							p_old_price=?, 
-        							p_current_price=?, 
+        							p_actual_price=?, 
+									p_gst=?, 
         							p_qty=?,
         							p_description=?,
         							p_short_description=?,
@@ -108,7 +109,8 @@ if(isset($_POST['form1'])) {
         	$statement->execute(array(
         							$_POST['p_name'],
         							$_POST['p_old_price'],
-        							$_POST['p_current_price'],
+        							$_POST['p_actual_price'],
+									$_POST['p_gst'],
         							$_POST['p_qty'],
         							$_POST['p_description'],
         							$_POST['p_short_description'],
@@ -131,7 +133,8 @@ if(isset($_POST['form1'])) {
         	$statement = $pdo->prepare("UPDATE tbl_product SET 
         							p_name=?, 
         							p_old_price=?, 
-        							p_current_price=?, 
+        							p_actual_price=?, 
+									p_gst=?,
         							p_qty=?,
         							p_featured_photo=?,
         							p_description=?,
@@ -147,7 +150,8 @@ if(isset($_POST['form1'])) {
         	$statement->execute(array(
         							$_POST['p_name'],
         							$_POST['p_old_price'],
-        							$_POST['p_current_price'],
+        							$_POST['p_actual_price'],
+									$_POST['p_gst'],
         							$_POST['p_qty'],
         							$final_name,
         							$_POST['p_description'],
@@ -229,7 +233,8 @@ $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $row) {
 	$p_name = $row['p_name'];
 	$p_old_price = $row['p_old_price'];
-	$p_current_price = $row['p_current_price'];
+	$p_actual_price = $row['p_actual_price'];
+	$p_gst = $row['p_gst'];
 	$p_qty = $row['p_qty'];
 	$p_featured_photo = $row['p_featured_photo'];
 	$p_description = $row['p_description'];
@@ -367,7 +372,13 @@ foreach ($result as $row) {
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Current Price <span>*</span><br><span style="font-size:10px;font-weight:normal;">(In USD)</span></label>
 							<div class="col-sm-4">
-								<input type="text" name="p_current_price" class="form-control" value="<?php echo $p_current_price; ?>">
+								<input type="text" name="p_actual_price" class="form-control" value="<?php echo $p_actual_price; ?>">
+							</div>
+						</div>	
+						<div class="form-group">
+							<label for="" class="col-sm-3 control-label">GST <br><span style="font-size:10px;font-weight:normal;">(In USD)</span></label>
+							<div class="col-sm-4">
+								<input type="text" name="p_gst" class="form-control" value="<?php echo $p_gst; ?>">
 							</div>
 						</div>	
 						<div class="form-group">
