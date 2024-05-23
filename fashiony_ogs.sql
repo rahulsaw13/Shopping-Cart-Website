@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 08, 2018 at 08:38 AM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Host: localhost:3306
+-- Generation Time: May 22, 2024 at 06:35 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -367,7 +366,7 @@ CREATE TABLE `tbl_customer` (
 
 INSERT INTO `tbl_customer` (`cust_id`, `cust_name`, `cust_cname`, `cust_email`, `cust_phone`, `cust_country`, `cust_address`, `cust_city`, `cust_state`, `cust_zip`, `cust_b_name`, `cust_b_cname`, `cust_b_phone`, `cust_b_country`, `cust_b_address`, `cust_b_city`, `cust_b_state`, `cust_b_zip`, `cust_s_name`, `cust_s_cname`, `cust_s_phone`, `cust_s_country`, `cust_s_address`, `cust_s_city`, `cust_s_state`, `cust_s_zip`, `cust_password`, `cust_token`, `cust_datetime`, `cust_timestamp`, `cust_status`) VALUES
 (4, 'Hammad', '', 'wonk.xags@gmail.com', '49857243857', 228, 'address', 'dubai', 'dubai', '0000', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', 'e10adc3949ba59abbe56e057f20f883e', '34d03a29d49aaba635ad6efee22c4d30', '2018-04-21 02:40:10', '1524264010', 1),
-(5, 'Hammad Hassan', '', 'mc170200216@vu.edu.pk', '49857243857', 228, 'address', 'dubai', 'Dubai', '0000', 'Hammad Hassan', 'Company Name', '971502020067', 228, 'Dubai Investments Park 1', 'Dubai', 'Dubai', '75400', 'Hammad Hassan', 'Company Name', '971502020067', 228, 'Dubai Investments Park 1', 'Dubai', 'Dubai', '75400', '9794cb7c1989a7d0d36a62426cb170e4', '92dd269f6494db9e8e8ab28c528bbe80', '2018-04-23 10:06:51', '1524506811', 1);
+(5, 'Hammad Hassan', '', 'cust@gmail.com', '49857243857', 228, 'address', 'dubai', 'Dubai', '0000', 'Hammad Hassan', 'Company Name', '971502020067', 228, 'Dubai Investments Park 1', 'Dubai', 'Dubai', '75400', 'Hammad Hassan', 'Company Name', '971502020067', 228, 'Dubai Investments Park 1', 'Dubai', 'Dubai', '75400', 'e10adc3949ba59abbe56e057f20f883e', '92dd269f6494db9e8e8ab28c528bbe80', '2018-04-23 10:06:51', '1524506811', 1);
 
 -- --------------------------------------------------------
 
@@ -891,20 +890,38 @@ CREATE TABLE `tbl_product` (
   `p_total_view` int(11) NOT NULL,
   `p_is_featured` int(1) NOT NULL,
   `p_is_active` int(1) NOT NULL,
-  `ecat_id` int(11) NOT NULL
+  `ecat_id` int(11) NOT NULL,
+  `p_gst` varchar(10) DEFAULT '0',
+  `p_actual_price` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_product`
 --
 
-INSERT INTO `tbl_product` (`p_id`, `p_name`, `p_old_price`, `p_current_price`, `p_qty`, `p_featured_photo`, `p_description`, `p_short_description`, `p_feature`, `p_condition`, `p_return_policy`, `p_total_view`, `p_is_featured`, `p_is_active`, `ecat_id`) VALUES
-(76, 'Gosh Donoderm Hand & Nail Cream', '', '30', 10, 'product-featured-76.jpg', '<ul class=\"generatedBullets\" style=\"box-sizing: inherit; line-height: 1.6; margin-right: 0px; margin-bottom: 1rem; margin-left: 1.25rem; padding: 0px; list-style-position: outside; color: rgb(10, 10, 10); font-family: opensans, &quot;Helvetica Neue&quot;, Helvetica, Helvetica, Arial, sans-serif;\"><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Category Type : Hands</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Suitable Skin Type : All Skin Type</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Texture : Cream</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Recommended Use : Wrinkles &amp; Anti Aging</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Size : 30 ml</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Type : Lotion</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Brand : GOSH</li></ul>', '<p>Gosh Donoderm Hand & Nail Cream - 30 ML<br></p>', '<ul class=\"generatedBullets\" style=\"box-sizing: inherit; line-height: 1.6; margin-right: 0px; margin-bottom: 0px; margin-left: 1.25rem; padding: 0px; list-style-position: inside; color: rgb(51, 51, 51); font-family: opensans, &quot;Helvetica Neue&quot;, Helvetica, Helvetica, Arial, sans-serif; font-size: 14px; text-transform: uppercase;\"><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Category Type : Hands</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Suitable Skin Type : All Skin Type</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Texture : Cream</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Recommended Use : Wrinkles &amp; Anti Aging</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Size : 30 ml</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Type : Lotion</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Brand : GOSH</li></ul>', '<p>Standard Fashionys.com Terms &amp; Conditions<br></p>', '<p>Standard Fashionys.com Return Policy</p>', 7, 0, 1, 40),
-(77, 'Laptop Backpack', '', '100', 10, 'product-featured-77.jpg', '<div><font color=\"#0a0a0a\" face=\"opensans, Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif\">Distinct design and pockets galore The striking, modern look of the Skedaddle Laptop Backpack exudes confidence with multi-functional pockets and protects your laptop.<br></font></div>', 'Baggallini Skedaddle Laptop Backpack specifically for women.', '<table>\r\n<tbody><tr>\r\n<td>Brand: </td>\r\n<td>Baggallini</td>\r\n</tr>\r\n<tr>\r\n<td>Features: </td>\r\n<td>Pockets: 3 interior slip, 3 interior zip, 4 exterior</td>\r\n</tr>\r\n<tr>\r\n<td>Target Group: </td>\r\n<td>Women</td>\r\n</tr>\r\n<tr>\r\n<td>Country of Origin: </td>\r\n<td>U.S.A</td>\r\n</tr>\r\n</tbody></table>', 'This product is directly shipped from U.S.A. and it includes import duty in the price.', '<p>Standard Return Policy</p>', 2, 1, 1, 60),
-(78, 'Blouse for Women', '110', '50', 10, 'product-featured-78.jpg', '<p>Stripes pattern with small metal beads on strap</p><p>Pair this top with your favorite pants for that casual classy look</p><p>Size on model: S</p>', '<p>This sleeveless blouse is made of 55% Viscose, 43% Polyamide, 2% Spandex<br></p>', '<p><table></p><p><tr></p><p><td>Brand: </td></p><p><td>Guess</td></p><p></tr></p><p><tr></p><p><td>Occasion: </td></p><p><td>Casual Dress</td></p><p></tr></p><p><tr></p><p><td>Material: </td></p><p><td>Mixed Materials</td></p><p></tr></p><p><tr></p><p><td>Sleeve Length: </td></p><p><td>Sleeveless</td></p><p></tr></p><p></table></p>', '<p>Standard Terms & Conditions<br></p>', '<p>Standard Return Policy</p>', 3, 0, 1, 33),
-(79, 'Glamorous Shirt Dress For Women', '100', '85', 10, 'product-featured-79.jpg', '<p><span style=\"color: rgb(10, 10, 10); font-family: opensans, \"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif;\">Show off your style in Glamorous’ Shirt dress for women. Crafted with soft and rich Polyester material, this dress will offer you great comfort and flair. Flaunt in glamour by pairing it with a matching footwear to experience a sophisticated take on every day wear by making a unique style statement wherever you go.</span><br></p>', '<p><span style=\"color: rgb(51, 51, 51); font-family: opensans, \"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif; font-size: 14px;\">Show off your style in Glamorous’ Shirt dress for women. Crafted with soft and rich Polyester material, this dress will offer you great comfort and flair. Flaunt in glamour by pairing it with a matching footwear to experience a sophisticated take on every day wear by making a unique style statement wherever you go.</span><br></p>', '<p>N/A</p>', '<p>N/A</p>', '<p>N/A</p>', 6, 1, 1, 32),
-(80, 'Jeans for Women - Denim', '', '249', 10, 'product-featured-80.jpg', '<p><span style=\"color: rgb(10, 10, 10); font-family: opensans, \"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif;\">Looking for a way to diversify your attire for the day then go ahead and wear these jeans from the house of Guess. Made of cotton, these jeans will let your skin breathe, keeping you comfortable all day long. Team them with a white colored top to complete your casual look.</span><br></p>', '<p><span style=\"color: rgb(10, 10, 10); font-family: opensans, \"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif;\">Looking for a way to diversify your attire for the day then go ahead and wear these jeans from the house of Guess. Made of cotton, these jeans will let your skin breathe, keeping you comfortable all day long. Team them with a white colored top to complete your casual look.</span><br></p>', '<p><span style=\"color: rgb(10, 10, 10); font-family: opensans, \"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif;\">Looking for a way to diversify your attire for the day then go ahead and wear these jeans from the house of Guess. Made of cotton, these jeans will let your skin breathe, keeping you comfortable all day long. Team them with a white colored top to complete your casual look.</span><br></p>', '<p>Standard Terms & Conditions    </p>', '<p>Standard Return Policy</p>', 2, 1, 1, 35),
-(81, 'Black Wool Beanie & Bobble Hat For Unisex', '10', '1', 9, 'product-featured-81.jpg', '<p>These Soft Knit Cap is a warm and comfortable choice.&nbsp;</p><p>Soft material will make you feel so comfortable and will make you look so special in the crowd .</p><p>This Men\'s Soft Lined Thick Knit Cap Warm Winter beanies Hat with Fully lined it warmth and comfort, very soft.</p>', '<p>These Soft Knit Cap is a warm and comfortable choice.&nbsp;</p><p>Soft material will make you feel so comfortable and will make you look so special in the crowd .</p><p>This Men\'s Soft Lined Thick Knit Cap Warm Winter beanies Hat with Fully lined it warmth and comfort, very soft.</p>', '<p>These Soft Knit Cap is a warm and comfortable choice.&nbsp;</p><p>Soft material will make you feel so comfortable and will make you look so special in the crowd .</p><p>This Men\'s Soft Lined Thick Knit Cap Warm Winter beanies Hat with Fully lined it warmth and comfort, very soft.</p>', '<p>Fashionys.com Standard Terms &amp; Conditions</p>', '<p>Fashionys.com Standard Return Policy<br></p>', 9, 1, 1, 1);
+INSERT INTO `tbl_product` (`p_id`, `p_name`, `p_old_price`, `p_current_price`, `p_qty`, `p_featured_photo`, `p_description`, `p_short_description`, `p_feature`, `p_condition`, `p_return_policy`, `p_total_view`, `p_is_featured`, `p_is_active`, `ecat_id`, `p_gst`, `p_actual_price`) VALUES
+(76, 'Gosh Donoderm Hand & Nail Cream', '', '30', 10, 'product-featured-76.jpg', '<ul class=\"generatedBullets\" style=\"box-sizing: inherit; line-height: 1.6; margin-right: 0px; margin-bottom: 1rem; margin-left: 1.25rem; padding: 0px; list-style-position: outside; color: rgb(10, 10, 10); font-family: opensans, &quot;Helvetica Neue&quot;, Helvetica, Helvetica, Arial, sans-serif;\"><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Category Type : Hands</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Suitable Skin Type : All Skin Type</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Texture : Cream</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Recommended Use : Wrinkles &amp; Anti Aging</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Size : 30 ml</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Type : Lotion</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit;\">Brand : GOSH</li></ul>', '<p>Gosh Donoderm Hand & Nail Cream - 30 ML<br></p>', '<ul class=\"generatedBullets\" style=\"box-sizing: inherit; line-height: 1.6; margin-right: 0px; margin-bottom: 0px; margin-left: 1.25rem; padding: 0px; list-style-position: inside; color: rgb(51, 51, 51); font-family: opensans, &quot;Helvetica Neue&quot;, Helvetica, Helvetica, Arial, sans-serif; font-size: 14px; text-transform: uppercase;\"><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Category Type : Hands</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Suitable Skin Type : All Skin Type</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Texture : Cream</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Recommended Use : Wrinkles &amp; Anti Aging</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Size : 30 ml</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Type : Lotion</li><li style=\"box-sizing: inherit; margin: 0px; padding: 0px; font-size: inherit; text-transform: none; list-style: inherit !important;\">Brand : GOSH</li></ul>', '<p>Standard Fashionys.com Terms &amp; Conditions<br></p>', '<p>Standard Fashionys.com Return Policy</p>', 7, 0, 1, 40, '0', '30'),
+(77, 'Laptop Backpack', '', '100', 10, 'product-featured-77.jpg', '<div><font color=\"#0a0a0a\" face=\"opensans, Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif\">Distinct design and pockets galore The striking, modern look of the Skedaddle Laptop Backpack exudes confidence with multi-functional pockets and protects your laptop.<br></font></div>', 'Baggallini Skedaddle Laptop Backpack specifically for women.', '<table>\r\n<tbody><tr>\r\n<td>Brand: </td>\r\n<td>Baggallini</td>\r\n</tr>\r\n<tr>\r\n<td>Features: </td>\r\n<td>Pockets: 3 interior slip, 3 interior zip, 4 exterior</td>\r\n</tr>\r\n<tr>\r\n<td>Target Group: </td>\r\n<td>Women</td>\r\n</tr>\r\n<tr>\r\n<td>Country of Origin: </td>\r\n<td>U.S.A</td>\r\n</tr>\r\n</tbody></table>', 'This product is directly shipped from U.S.A. and it includes import duty in the price.', '<p>Standard Return Policy</p>', 4, 1, 1, 60, '0', '100'),
+(78, 'Blouse for Women', '110', '50', 10, 'product-featured-78.jpg', '<p>Stripes pattern with small metal beads on strap</p><p>Pair this top with your favorite pants for that casual classy look</p><p>Size on model: S</p>', '<p>This sleeveless blouse is made of 55% Viscose, 43% Polyamide, 2% Spandex<br></p>', '<p><table></p><p><tr></p><p><td>Brand: </td></p><p><td>Guess</td></p><p></tr></p><p><tr></p><p><td>Occasion: </td></p><p><td>Casual Dress</td></p><p></tr></p><p><tr></p><p><td>Material: </td></p><p><td>Mixed Materials</td></p><p></tr></p><p><tr></p><p><td>Sleeve Length: </td></p><p><td>Sleeveless</td></p><p></tr></p><p></table></p>', '<p>Standard Terms & Conditions<br></p>', '<p>Standard Return Policy</p>', 3, 0, 1, 33, '0', '50'),
+(79, 'Glamorous Shirt Dress For Women', '100', '85', 10, 'product-featured-79.jpg', '<p><span style=\"color: rgb(10, 10, 10); font-family: opensans, \"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif;\">Show off your style in Glamorous’ Shirt dress for women. Crafted with soft and rich Polyester material, this dress will offer you great comfort and flair. Flaunt in glamour by pairing it with a matching footwear to experience a sophisticated take on every day wear by making a unique style statement wherever you go.</span><br></p>', '<p><span style=\"color: rgb(51, 51, 51); font-family: opensans, \"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif; font-size: 14px;\">Show off your style in Glamorous’ Shirt dress for women. Crafted with soft and rich Polyester material, this dress will offer you great comfort and flair. Flaunt in glamour by pairing it with a matching footwear to experience a sophisticated take on every day wear by making a unique style statement wherever you go.</span><br></p>', '<p>N/A</p>', '<p>N/A</p>', '<p>N/A</p>', 6, 1, 1, 32, '0', '85'),
+(80, 'Jeans for Women - Denim', '', '273.9', 10, 'product-featured-80.jpg', '<p><span style=\"color: rgb(10, 10, 10); font-family: opensans, \"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif;\">Looking for a way to diversify your attire for the day then go ahead and wear these jeans from the house of Guess. Made of cotton, these jeans will let your skin breathe, keeping you comfortable all day long. Team them with a white colored top to complete your casual look.</span><br></p>', '<p><span style=\"color: rgb(10, 10, 10); font-family: opensans, \"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif;\">Looking for a way to diversify your attire for the day then go ahead and wear these jeans from the house of Guess. Made of cotton, these jeans will let your skin breathe, keeping you comfortable all day long. Team them with a white colored top to complete your casual look.</span><br></p>', '<p><span style=\"color: rgb(10, 10, 10); font-family: opensans, \"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif;\">Looking for a way to diversify your attire for the day then go ahead and wear these jeans from the house of Guess. Made of cotton, these jeans will let your skin breathe, keeping you comfortable all day long. Team them with a white colored top to complete your casual look.</span><br></p>', '<p>Standard Terms & Conditions    </p>', '<p>Standard Return Policy</p>', 2, 1, 1, 35, '10', '249'),
+(81, 'Black Wool Beanie & Bobble Hat For Unisex', '10', '11', 9, 'product-featured-81.jpg', '<p>These Soft Knit Cap is a warm and comfortable choice. </p><p>Soft material will make you feel so comfortable and will make you look so special in the crowd .</p><p>This Men\'s Soft Lined Thick Knit Cap Warm Winter beanies Hat with Fully lined it warmth and comfort, very soft.</p>', '<p>These Soft Knit Cap is a warm and comfortable choice. </p><p>Soft material will make you feel so comfortable and will make you look so special in the crowd .</p><p>This Men\'s Soft Lined Thick Knit Cap Warm Winter beanies Hat with Fully lined it warmth and comfort, very soft.</p>', '<p>These Soft Knit Cap is a warm and comfortable choice. </p><p>Soft material will make you feel so comfortable and will make you look so special in the crowd .</p><p>This Men\'s Soft Lined Thick Knit Cap Warm Winter beanies Hat with Fully lined it warmth and comfort, very soft.</p>', '<p>Fashionys.com Standard Terms & Conditions</p>', '<p>Fashionys.com Standard Return Policy<br></p>', 9, 1, 1, 1, '10', '10');
+
+--
+-- Triggers `tbl_product`
+--
+DELIMITER $$
+CREATE TRIGGER `update_p_current_price` BEFORE INSERT ON `tbl_product` FOR EACH ROW BEGIN
+    SET NEW.p_current_price = NEW.p_actual_price * (100 + NEW.p_gst) / 100;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `update_p_current_price_on_update` BEFORE UPDATE ON `tbl_product` FOR EACH ROW BEGIN
+    SET NEW.p_current_price = NEW.p_actual_price * (100 + NEW.p_gst) / 100;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -961,8 +978,8 @@ INSERT INTO `tbl_product_color` (`id`, `color_id`, `p_id`) VALUES
 (159, 2, 77),
 (163, 17, 79),
 (164, 2, 78),
-(167, 3, 80),
-(168, 2, 81);
+(170, 3, 80),
+(171, 2, 81);
 
 -- --------------------------------------------------------
 
@@ -1144,7 +1161,7 @@ INSERT INTO `tbl_product_size` (`id`, `size_id`, `p_id`) VALUES
 (254, 3, 78),
 (255, 4, 78),
 (256, 5, 78),
-(259, 26, 80);
+(260, 26, 80);
 
 -- --------------------------------------------------------
 
@@ -1260,7 +1277,7 @@ CREATE TABLE `tbl_settings` (
   `ads_above_popular_product_on_off` int(1) NOT NULL,
   `ads_above_testimonial_on_off` int(1) NOT NULL,
   `ads_category_sidebar_on_off` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_settings`
@@ -1471,8 +1488,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `full_name`, `email`, `phone`, `password`, `photo`, `role`, `status`) VALUES
-(1, 'Hammad Hassan', 'hammad.shahir@gmail.com', '', '81dc9bdb52d04dc20036dbd8313ed055', 'user-1.jpg', 'Super Admin', 'Active'),
-(13, 'Syed Hammad Hassan Bukhari', 'mc170200216@vu.edu.pk', '', '81dc9bdb52d04dc20036dbd8313ed055', 'user-13.jpg', 'Admin', 'Active');
+(1, 'Hammad Hassan', 'abc@gmail.com', '', 'e10adc3949ba59abbe56e057f20f883e', 'user-1.jpg', 'Super Admin', 'Active'),
+(13, 'Syed Hammad Hassan Bukhari', 'xyz@gmail.com', '', 'e10adc3949ba59abbe56e057f20f883e', 'user-13.jpg', 'Admin', 'Active');
 
 -- --------------------------------------------------------
 
@@ -1759,13 +1776,13 @@ ALTER TABLE `tbl_post`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `tbl_product_color`
 --
 ALTER TABLE `tbl_product_color`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
 -- AUTO_INCREMENT for table `tbl_product_photo`
@@ -1777,7 +1794,7 @@ ALTER TABLE `tbl_product_photo`
 -- AUTO_INCREMENT for table `tbl_product_size`
 --
 ALTER TABLE `tbl_product_size`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=260;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
 
 --
 -- AUTO_INCREMENT for table `tbl_rating`
