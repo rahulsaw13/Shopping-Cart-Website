@@ -279,29 +279,45 @@ foreach ($result as $row) {
 <div class="header">
 	<div class="container">
 		<div class="row inner">
-			<div class="col-md-4 logo">
+			<div class="col-md-3 logo">
 				<a href="index.php"><img src="assets/uploads/<?php echo $logo; ?>" alt="logo image"></a>
 			</div>
 			
-			<div class="col-md-5 right">
-				<ul>
-					
-					<?php
-					if(isset($_SESSION['customer'])) {
-						?>
-						<li><i class="fa fa-user"></i> <?php echo LANG_VALUE_13; ?> <?php echo $_SESSION['customer']['cust_name']; ?></li>
-						<li><a href="dashboard.php"><i class="fa fa-home"></i> <?php echo LANG_VALUE_89; ?></a></li>
-						<?php
-					} else {
-						?>
-						<li><a href="login.php"><i class="fa fa-sign-in"></i> <?php echo LANG_VALUE_9; ?></a></li>
-						<li><a href="registration.php"><i class="fa fa-user-plus"></i> <?php echo LANG_VALUE_15; ?></a></li>
-						<?php	
-					}
-					?>
+			<div class="col-md-6 search-area">
+				<form class="navbar-form navbar-left" role="search" action="search-result.php" method="get">
+					<?php $csrf->echoInputField(); ?>
+					<div class="form-group">
+						<input type="text" class="form-control search-top" placeholder="<?php echo LANG_VALUE_2; ?>" name="search_text">
+					</div>
+					<button type="submit" class="btn btn-default"><?php echo LANG_VALUE_3; ?></button>
+				</form>
+			</div>
+            <div class="col-md-1 right">
+				<div class="btn-group">
+				<button class="btn btn-primary dropdown-toggle login" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
+                        <i class="fa fa-user"></i> <?php echo isset($_SESSION['customer']) ? ' My Profile' : ' Login'; ?>
+                    </button>
+                    <div class="dropdown-menu">
+                        <?php if(isset($_SESSION['customer'])): ?>
+                            <a class="dropdown-item" href="dashboard.php"> Dashboard</a></br>
+                            <a class="dropdown-item" href="customer-profile-update.php"> Update Profile</a></br>
+                            <a class="dropdown-item" href="customer-password-update.php"> Update Password</a></br>
+                            <a class="dropdown-item" href="customer-billing-shipping-update.php"> Shipping Address</a></br>
+                            <a class="dropdown-item" href="customer-order.php"> Orders</a></br>
+                            <a class="dropdown-item" href="logout.php"> Logout</a></br>
+						</ul>
+                        <?php else: ?>
+						    <a class="dropdown-item" href="login.php"> Login</a></br>
+                            <a class="dropdown-item" href="registration.php"> Register</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+			</div>
 
-					<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_19; ?> (<?php echo LANG_VALUE_1; ?><?php
-					if(isset($_SESSION['cart_p_id'])) {
+			<div class="col-md-12 right">
+				<ul>
+				<li><a href="cart.php"><i class="fa fa-shopping-cart fa-2x"></i> <?php echo LANG_VALUE_19; ?> (<?php echo LANG_VALUE_1; ?><?php
+					 if(isset($_SESSION['cart_p_id'])) {
 						$table_total_price = 0;
 						$i=0;
 	                    foreach($_SESSION['cart_p_qty'] as $key => $value) 
@@ -324,15 +340,6 @@ foreach ($result as $row) {
 					}
 					?>)</a></li>
 				</ul>
-			</div>
-			<div class="col-md-3 search-area">
-				<form class="navbar-form navbar-left" role="search" action="search-result.php" method="get">
-					<?php $csrf->echoInputField(); ?>
-					<div class="form-group">
-						<input type="text" class="form-control search-top" placeholder="<?php echo LANG_VALUE_2; ?>" name="search_text">
-					</div>
-					<button type="submit" class="btn btn-default"><?php echo LANG_VALUE_3; ?></button>
-				</form>
 			</div>
 		</div>
 	</div>
