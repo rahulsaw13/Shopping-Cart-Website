@@ -85,6 +85,16 @@ if (isset($_POST['form1'])) {
         $cust_datetime = date('Y-m-d h:i:s');
         $cust_timestamp = time();
 
+         // Set billing fields same as customer fields
+         $cust_b_name = $_POST['cust_name'];
+         $cust_b_cname = $_POST['cust_cname'];
+         $cust_b_phone = $_POST['cust_phone'];
+         $cust_b_country = $_POST['cust_country'];
+         $cust_b_address = $_POST['cust_address'];
+         $cust_b_city = $_POST['cust_city'];
+         $cust_b_state = $_POST['cust_state'];
+         $cust_b_zip = $_POST['cust_zip'];
+
         // saving into the database
         $statement = $pdo->prepare("INSERT INTO tbl_customer (
                                         cust_name,
@@ -128,14 +138,14 @@ if (isset($_POST['form1'])) {
                                         strip_tags($_POST['cust_city']),
                                         strip_tags($_POST['cust_state']),
                                         strip_tags($_POST['cust_zip']),
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                        '',
+                                        strip_tags($cust_b_name),
+                                        strip_tags($cust_b_cname),
+                                        strip_tags($cust_b_phone),
+                                        strip_tags($cust_b_country),
+                                        strip_tags($cust_b_address),
+                                        strip_tags($cust_b_city),
+                                        strip_tags($cust_b_state),
+                                        strip_tags($cust_b_zip),
                                         '',
                                         '',
                                         '',
